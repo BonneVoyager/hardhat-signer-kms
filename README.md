@@ -2,6 +2,8 @@
 
 This plugin signs Ethereum transaction using KMS key during deployments.
 
+This is a fork with additional support for function calls, personal signs, and getting the public key, as well as updated dependencies.
+
 ## Usage
 
 It's assumed that you have AWS access configured and your role perform kms:sign using KMS key.
@@ -9,14 +11,12 @@ It's assumed that you have AWS access configured and your role perform kms:sign 
 In `hardhat.config.ts` do:
 
 ```
-import "@rumblefishdev/hardhat-kms-signer";
-
-...
+import "hardhat-signer-kms";
 
 const config: HardhatUserConfig = {
   networks: {
-    ropsten: {
-      url: `https://ropsten.infura.io/v3/${process.env.INFURA_KEY}`,
+    sepolia: {
+      url: `https://sepolia.infura.io/v3/${process.env.INFURA_KEY}`,
       kmsKeyId: "YOUR KMS KEY ID"
     }
   }
@@ -26,7 +26,7 @@ const config: HardhatUserConfig = {
 ### Learn your address
 
 ```
-$ node_modules/.bin/hardhat console --network ropsten
+$ node_modules/.bin/hardhat console --network sepolia
 Creating Typechain artifacts in directory types for target ethers-v5
 Successfully generated Typechain artifacts!
 Welcome to Node.js v12.22.6.
@@ -44,14 +44,12 @@ On less crowded networks (such as Sepolia) there may be situations where automat
 set minimal values for them in config:
 
 ```
-import "@rumblefishdev/hardhat-kms-signer";
-
-...
+import "hardhat-signer-kms";
 
 const config: HardhatUserConfig = {
   networks: {
-    ropsten: {
-      url: `https://ropsten.infura.io/v3/${process.env.INFURA_KEY}`,
+    sepolia: {
+      url: `https://sepolia.infura.io/v3/${process.env.INFURA_KEY}`,
       kmsKeyId: "YOUR KMS KEY ID",
       minMaxFeePerGas: 1600000000,
       mixMaxPriorityFeePerGas: 1200000000
@@ -59,4 +57,3 @@ const config: HardhatUserConfig = {
   }
 }
 ```
-

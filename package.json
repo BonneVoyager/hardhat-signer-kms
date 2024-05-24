@@ -1,8 +1,7 @@
 {
-  "name": "@rumblefishdev/hardhat-kms-signer",
-  "version": "1.1.2",
-  "description": "Sign Hardhat deployment transactions using KMS key",
-  "repository": "github:rumblefishdev/hardhat-kms-signer",
+  "name": "hardhat-signer-kms",
+  "version": "1.2.0",
+  "description": "Sign Hardhat transactions using KMS key",
   "author": "Rumblefish Software Development",
   "license": "MIT",
   "main": "dist/index.js",
@@ -27,26 +26,34 @@
     "README.md"
   ],
   "dependencies": {
-    "@rumblefishdev/eth-signer-kms": "^2.1.0",
-    "@types/lodash": "^4.14.172",
+    "@rumblefishdev/eth-signer-kms": "^3.0.0",
     "asn1.js": "^5.4.1",
     "bn.js": "^5.2.1",
+    "ethereumjs-util": "^7.1.5",
     "ethers": "^5.7.2"
   },
   "devDependencies": {
+    "@aws-sdk/client-kms": "^3.515.0",
     "@types/chai": "^4.1.7",
     "@types/fs-extra": "^5.0.4",
+    "@types/lodash": "^4.14.172",
     "@types/mocha": "^5.2.6",
     "@types/node": "^16.18.0",
-    "aws-sdk": "*",
     "chai": "^4.2.0",
     "hardhat": "^2.12.3",
-    "mocha": "^7.1.2",
     "prettier": "2.0.5",
     "ts-node": "^8.1.0",
     "tslint": "^5.16.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-plugin-prettier": "^2.0.1",
     "typescript": "^4.0.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BonneVoyager/hardhat-signer-kms.git"
+  },
+  "bugs": {
+    "url": "https://github.com/BonneVoyager/hardhat-signer-kms/issues"
+  },
+  "homepage": "https://github.com/BonneVoyager/hardhat-signer-kms#readme"
 }

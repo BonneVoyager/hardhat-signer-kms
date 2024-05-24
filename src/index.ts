@@ -34,17 +34,21 @@ extendConfig(
 extendEnvironment((hre) => {
   if (hre.network.config.kmsKeyId) {
     const httpNetConfig = hre.network.config as HttpNetworkUserConfig;
+
     const eip1193Provider = new HttpProvider(
       httpNetConfig.url!,
       hre.network.name,
       httpNetConfig.httpHeaders,
       httpNetConfig.timeout
     );
-    let wrappedProvider: EIP1193Provider;
-    wrappedProvider = new KMSSigner(
+
+    const kmsSigner = new KMSSigner(
       eip1193Provider,
       hre.network.config.kmsKeyId
     );
+
+    let wrappedProvider: EIP1193Provider;
+    wrappedProvider = kmsSigner
     wrappedProvider = new AutomaticGasProvider(
       wrappedProvider,
       hre.network.config.gasMultiplier
@@ -57,5 +61,7 @@ extendEnvironment((hre) => {
     hre.network.provider = new BackwardsCompatibilityProviderAdapter(
       wrappedProvider
     );
+
+    hre.network.config.kms = kmsSigner;
   }
 });
