@@ -81,13 +81,13 @@ export class KMSSigner extends ProviderWrapperWithChainId {
         address: sender,
       });
       return utils.joinSignature(sig);
-    } else if (args.method === "eth_estimateGas") {
+    } else if (args.method === "eth_estimateGas" && params[0]?.to !== undefined) {
       return this._wrappedProvider.request({
         method: "eth_estimateGas",
-        params: {
-          ...args.params,
+        params: [{
+          ...params[0],
           from: sender,
-        }
+        }]
       });
     }
 

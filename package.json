@@ -1,6 +1,6 @@
 {
   "name": "hardhat-signer-kms",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Sign Hardhat transactions using KMS key",
   "author": "Rumblefish Software Development",
   "license": "MIT",
